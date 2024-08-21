@@ -7,7 +7,6 @@ import HealthAndSafety from "./HealthAndSafety";
 
 const Homepage = () => {
   const steps = ["Personal Info", "Travel Preference", "Health and Safety"];
-
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -21,9 +20,15 @@ const Homepage = () => {
   return (
     <>
       <HorizonalStepper steps={steps} activeStep={activeStep} />
-      <HealthAndSafety />
-      <PersonalInfo />
-      <TravelPreference />
+
+      {activeStep === 0 ? (
+        <PersonalInfo />
+      ) : activeStep === 1 ? (
+        <TravelPreference />
+      ) : (
+        <HealthAndSafety />
+      )}
+
       <StepperButtons
         stepsLength={steps.length}
         activeStep={activeStep}
