@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 
 const PersonalInfo = () => {
@@ -12,8 +12,6 @@ const PersonalInfo = () => {
 
   return (
     <FormContainer>
-      <h2>Personal Information</h2>
-
       <Form onSubmit={submitHandler}>
         <Form.Group className="my-2" controlId="name">
           <Row>
@@ -23,7 +21,7 @@ const PersonalInfo = () => {
             <Col md={9}>
               <Form.Control
                 type="text"
-                placeholder="Enter full name"
+                placeholder="Enter Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
@@ -39,7 +37,6 @@ const PersonalInfo = () => {
             <Col md={9}>
               <Form.Control
                 type="date"
-                placeholder="Date of birth"
                 value={dateOfBirth}
                 onChange={(e) => setDateOfBirth(e.target.value)}
               ></Form.Control>
@@ -71,7 +68,7 @@ const PersonalInfo = () => {
             <Col md={9}>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Enter Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
@@ -94,10 +91,6 @@ const PersonalInfo = () => {
             </Col>
           </Row>
         </Form.Group>
-
-        <Button disabled="false" type="submit" variant="primary">
-          Sign In
-        </Button>
       </Form>
     </FormContainer>
   );
