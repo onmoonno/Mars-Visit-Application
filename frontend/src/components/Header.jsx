@@ -10,11 +10,20 @@ const Header = () => {
           <Row>
             <Col>
               <Navbar.Brand>
-                <img width="60px" src={logo} alt="Cozii Proptech" />
+                <img
+                  width="100px"
+                  src={logo}
+                  alt="Cozii Proptech"
+                  style={{ paddingTop: "20px" }}
+                />
               </Navbar.Brand>
             </Col>
             <Col>
-              <Navbar.Brand>Welcome To Mars</Navbar.Brand>
+              <Navbar.Brand>
+                <h1 style={{ marginTop: "20px", marginBottom: "0px" }}>
+                  Welcome To Mars
+                </h1>
+              </Navbar.Brand>
             </Col>
           </Row>
         </Container>
