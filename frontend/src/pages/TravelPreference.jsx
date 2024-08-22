@@ -4,11 +4,9 @@ import FormContainer from "../components/FormContainer";
 import { handleFormChange } from "../utils/handleFormChange";
 
 const TravelPreference = ({ data, setData }) => {
-  const submitHandler = () => {};
-
   return (
     <FormContainer>
-      <Form onSubmit={submitHandler}>
+      <Form>
         {/* Departure Date Section */}
         <Form.Group className="my-2" controlId="departureDate">
           <Row>
@@ -19,7 +17,7 @@ const TravelPreference = ({ data, setData }) => {
               <Form.Control
                 type="date"
                 value={data.departureDate}
-                onChange={handleFormChange(setData, "departureDate")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>
@@ -35,7 +33,7 @@ const TravelPreference = ({ data, setData }) => {
               <Form.Control
                 type="date"
                 value={data.returnDate}
-                onChange={handleFormChange(setData, "returnDate")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>
@@ -51,7 +49,7 @@ const TravelPreference = ({ data, setData }) => {
               <Form.Control
                 as="select"
                 value={data.accommodation}
-                onChange={handleFormChange(setData, "accommodation")}
+                onChange={handleFormChange(setData)}
               >
                 <option value="">Select An Option...</option>
                 <option value="Space Hotel">Space Hotel</option>
@@ -72,7 +70,7 @@ const TravelPreference = ({ data, setData }) => {
                 type="text"
                 placeholder="Any Other Preferences? "
                 value={data.specialRequest}
-                onChange={handleFormChange(setData, "specialRequest")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>

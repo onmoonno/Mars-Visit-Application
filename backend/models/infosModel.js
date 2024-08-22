@@ -51,7 +51,6 @@ const infosSchema = new mongoose.Schema(
     },
     medicalCondition: {
       type: String,
-      required: true,
     },
   },
   {

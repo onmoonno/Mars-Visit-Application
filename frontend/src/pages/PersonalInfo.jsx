@@ -4,15 +4,9 @@ import FormContainer from "../components/FormContainer";
 import { handleFormChange } from "../utils/handleFormChange";
 
 const PersonalInfo = ({ data, setData }) => {
-  const submitHandler = (event) => {
-    event.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", data);
-  };
-
   return (
     <FormContainer>
-      <Form onSubmit={submitHandler}>
+      <Form>
         {/* Name Section */}
         <Form.Group className="my-2" controlId="name">
           <Row>
@@ -24,7 +18,7 @@ const PersonalInfo = ({ data, setData }) => {
                 type="text"
                 placeholder="Enter Full Name"
                 value={data.name}
-                onChange={handleFormChange(setData, "name")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>
@@ -40,12 +34,11 @@ const PersonalInfo = ({ data, setData }) => {
               <Form.Control
                 type="date"
                 value={data.dateOfBirth}
-                onChange={handleFormChange(setData, "dateOfBirth")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>
         </Form.Group>
-
         {/* Nationality Section */}
         <Form.Group className="my-2" controlId="nationality">
           <Row>
@@ -57,12 +50,11 @@ const PersonalInfo = ({ data, setData }) => {
                 type="text"
                 placeholder="Enter Your Nationality"
                 value={data.nationality}
-                onChange={handleFormChange(setData, "nationality")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>
         </Form.Group>
-
         {/* Email Section */}
         <Form.Group className="my-2" controlId="email">
           <Row>
@@ -74,12 +66,11 @@ const PersonalInfo = ({ data, setData }) => {
                 type="email"
                 placeholder="Enter Email"
                 value={data.email}
-                onChange={handleFormChange(setData, "email")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>
         </Form.Group>
-
         {/* Phone Section */}
         <Form.Group className="my-2" controlId="phone">
           <Row>
@@ -91,7 +82,7 @@ const PersonalInfo = ({ data, setData }) => {
                 type="tel"
                 placeholder="Enter Phone"
                 value={data.phone}
-                onChange={handleFormChange(setData, "phone")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>

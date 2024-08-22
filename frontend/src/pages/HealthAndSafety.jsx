@@ -19,7 +19,7 @@ const HealthAndSafety = ({ data, setData }) => {
               <Form.Control
                 as="select"
                 value={data.healthy}
-                onChange={handleFormChange(setData, "healthy")}
+                onChange={handleFormChange(setData)}
               >
                 <option value="">Select An Option...</option>
                 <option value="yes">Yes</option>
@@ -40,7 +40,7 @@ const HealthAndSafety = ({ data, setData }) => {
                 type="text"
                 placeholder="Enter Emergency Contact"
                 value={data.emergencyContact}
-                onChange={handleFormChange(setData, "emergencyContact")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>
@@ -57,7 +57,7 @@ const HealthAndSafety = ({ data, setData }) => {
                 type="tel"
                 placeholder="Enter Emergency Contact Phone"
                 value={data.emergencyContactPhone}
-                onChange={handleFormChange(setData, "emergencyContactPhone")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>
@@ -74,7 +74,7 @@ const HealthAndSafety = ({ data, setData }) => {
                 type="text"
                 placeholder="Any Medical Conditions? "
                 value={data.medicalCondition}
-                onChange={handleFormChange(setData, "medicalCondition")}
+                onChange={handleFormChange(setData)}
               ></Form.Control>
             </Col>
           </Row>

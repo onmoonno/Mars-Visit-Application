@@ -6,6 +6,7 @@ import TravelPreference from "./TravelPreference";
 import HealthAndSafety from "./HealthAndSafety";
 import initialData from "../utils/initialData";
 import applicationSteps from "../utils/applicationSteps";
+import stepValidation from "../utils/stepValidation";
 import axios from "axios";
 
 const Homepage = () => {
@@ -26,9 +27,15 @@ const Homepage = () => {
   const [data, setData] = useState(initialData);
 
   // Handle the buttons
+  // Call useStepValidation at the top level of the component
+
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    const isValid = stepValidation(data, activeStep);
+    if (isValid) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
+
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
@@ -38,24 +45,9 @@ const Homepage = () => {
   };
 
   const handleSubmit = async (e) => {
-    const {
-      name,
-      dateOfBirth,
-      nationality,
-      email,
-      phone,
-      departureDate,
-      returnDate,
-      specialRequest,
-      accommodation,
-      healthy,
-      emergencyContact,
-      emergencyContactPhone,
-      medicalCondition,
-    } = data;
-    e.preventDefault();
-    try {
-      await axios.post("/api/infos/submit", {
+    const isValid = stepValidation(data, activeStep);
+    if (isValid) {
+      const {
         name,
         dateOfBirth,
         nationality,
@@ -69,12 +61,30 @@ const Homepage = () => {
         emergencyContact,
         emergencyContactPhone,
         medicalCondition,
-      });
-      alert("Application Successful!"); // You can replace this with state management for rendering success messages
-      handleNext();
-    } catch (error) {
-      alert("Registration failed!");
-      console.log(error);
+      } = data;
+      e.preventDefault();
+      try {
+        await axios.post("/api/infos/submit", {
+          name,
+          dateOfBirth,
+          nationality,
+          email,
+          phone,
+          departureDate,
+          returnDate,
+          specialRequest,
+          accommodation,
+          healthy,
+          emergencyContact,
+          emergencyContactPhone,
+          medicalCondition,
+        });
+
+        handleNext();
+      } catch (error) {
+        alert("Registration failed!");
+        console.log(error);
+      }
     }
   };
 
