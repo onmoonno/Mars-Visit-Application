@@ -4,7 +4,6 @@ import StepperButtons from "../components/StepperButton";
 import PersonalInfo from "./PersonalInfo";
 import TravelPreference from "./TravelPreference";
 import HealthAndSafety from "./HealthAndSafety";
-// import infos from "../infos";
 import axios from "axios";
 
 const Homepage = () => {
@@ -12,7 +11,7 @@ const Homepage = () => {
   const [infos, setInfos] = useState([]);
   useEffect(() => {
     const fetchinfos = async () => {
-      const { data } = await axios.get("http://localhost:5000/api/infos");
+      const { data } = await axios.get("/api/infos");
       setInfos(data);
     };
     fetchinfos();
