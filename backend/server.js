@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import infos from "./data/infos.js";
 import infosRoutes from "./routes/infosRoutes.js";
-// import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import { notFound, errorHandler } from "./middlerware/errorMiddleware.js";
 
 dotenv.config(); // Use .env variables
 connectDB(); // Connect database
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/infos", infosRoutes); // everytime use the infosRoutes, first hit /api/infos
 
-// app.use(notFound);
-// app.use(errorHandler);
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

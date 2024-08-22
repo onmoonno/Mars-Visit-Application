@@ -1,15 +1,8 @@
 import express from "express";
-import Infos from "../models/infosModel.js";
-import asyncHandler from "../middlerware/asyncHandler.js";
+import { getInfos } from "../controllers/infosController";
 
 const router = express.Router();
 
-router.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    const infos = await Infos.find({});
-    res.json(infos);
-  })
-);
+router.route("/").get(getInfos);
 
 export default router;
