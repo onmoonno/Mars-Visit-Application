@@ -60,6 +60,6 @@ const infosSchema = new mongoose.Schema(
   }
 );
 
-const Infos = mongoose.model("Infos", infosSchemaSchema);
+const Infos = mongoose.model("Infos", infosSchema);
 
 export default Infos;

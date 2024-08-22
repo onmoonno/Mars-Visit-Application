@@ -9,8 +9,8 @@
     "server": "npm start --watch backend/server.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "data:import": "node backend/seeder.js",
-    "data:destroy": "node backend/seeder.js -d"
+    "data:import": "node backend/config/dbSeeder.js",
+    "data:destroy": "node backend/config/dbSeeder.js -d"
   },
   "author": "Yunxia Zhang",
   "license": "MIT",

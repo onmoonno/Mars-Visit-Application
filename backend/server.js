@@ -2,8 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import infos from "./data/infos.js";
-
-// import productRoutes from "./routes/productRoutes.js";
+import infosRoutes from "./routes/infosRoutes.js";
 // import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config(); // Use .env variables
@@ -16,11 +15,7 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.get("/api/infos", (req, res) => {
-  res.json(infos);
-});
-
-// app.use("/api/products", productRoutes); // everytime use the productRoutes, first hit /api/products
+app.use("/api/infos", infosRoutes); // everytime use the infosRoutes, first hit /api/infos
 
 // app.use(notFound);
 // app.use(errorHandler);
