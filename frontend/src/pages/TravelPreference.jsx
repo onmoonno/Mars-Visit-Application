@@ -1,18 +1,15 @@
-import { useState } from "react";
 import { Form, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
+import { handleFormChange } from "../utils/handleFormChange";
 
-const TravelPreference = () => {
-  const [departureDate, setDepartureDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
-  const [specialRequest, setSpecialRequest] = useState("");
-  const [accommodation, setAccommodation] = useState("");
+const TravelPreference = ({ data, setData }) => {
   const submitHandler = () => {};
 
   return (
     <FormContainer>
       <Form onSubmit={submitHandler}>
-        <Form.Group className="my-2" controlId="ddepartureDate">
+        {/* Departure Date Section */}
+        <Form.Group className="my-2" controlId="departureDate">
           <Row>
             <Col md={3}>
               <Form.Label>Departure Date</Form.Label>
@@ -20,13 +17,14 @@ const TravelPreference = () => {
             <Col md={9}>
               <Form.Control
                 type="date"
-                value={departureDate}
-                onChange={(e) => setDepartureDate(e.target.value)}
+                value={data.departureDate}
+                onChange={handleFormChange(setData, "departureDate")}
               ></Form.Control>
             </Col>
           </Row>
         </Form.Group>
 
+        {/* Return Date Section */}
         <Form.Group className="my-2" controlId="returnDate">
           <Row>
             <Col md={3}>
@@ -35,13 +33,14 @@ const TravelPreference = () => {
             <Col md={9}>
               <Form.Control
                 type="date"
-                value={returnDate}
-                onChange={(e) => setReturnDate(e.target.value)}
+                value={data.returnDate}
+                onChange={handleFormChange(setData, "returnDate")}
               ></Form.Control>
             </Col>
           </Row>
         </Form.Group>
 
+        {/* Accommodation Preference */}
         <Form.Group className="my-2" controlId="accommodation">
           <Row>
             <Col md={3}>
@@ -50,10 +49,8 @@ const TravelPreference = () => {
             <Col md={9}>
               <Form.Control
                 as="select"
-                value={accommodation}
-                onChange={(e) => {
-                  setAccommodation(e.target.value);
-                }}
+                value={data.accommodation}
+                onChange={handleFormChange(setData, "accommodation")}
               >
                 <option value="">Select An Option...</option>
                 <option value="Space Hotel">Space Hotel</option>
@@ -63,6 +60,7 @@ const TravelPreference = () => {
           </Row>
         </Form.Group>
 
+        {/* Special Request */}
         <Form.Group className="my-2" controlId="specialRequest">
           <Row>
             <Col md={3}>
@@ -72,8 +70,8 @@ const TravelPreference = () => {
               <Form.Control
                 type="text"
                 placeholder="Any Other Preferences? "
-                value={specialRequest}
-                onChange={(e) => setSpecialRequest(e.target.value)}
+                value={data.specialRequest}
+                onChange={handleFormChange(setData, "specialRequest")}
               ></Form.Control>
             </Col>
           </Row>

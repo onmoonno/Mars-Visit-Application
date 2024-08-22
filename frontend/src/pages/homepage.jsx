@@ -9,6 +9,23 @@ const Homepage = () => {
   const steps = ["Personal Info", "Travel Preference", "Health and Safety"];
   const [activeStep, setActiveStep] = useState(0);
 
+  const initialData = {
+    name: "",
+    dateOfBirth: "",
+    nationality: "",
+    email: "",
+    phone: "",
+    departureDate: "",
+    returnDate: "",
+    specialRequest: "",
+    accommodation: "",
+    healthy: "",
+    emergencyContact: "",
+    emergencyContactPhone: "",
+    medicalCondition: "",
+  };
+  const [data, setData] = useState(initialData);
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -17,16 +34,21 @@ const Homepage = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const handleReset = () => {
+    setActiveStep(0);
+    setData(initialData);
+  };
+
   return (
     <>
       <HorizonalStepper steps={steps} activeStep={activeStep} />
 
       {activeStep === 0 ? (
-        <PersonalInfo />
+        <PersonalInfo data={data} setData={setData} />
       ) : activeStep === 1 ? (
-        <TravelPreference />
+        <TravelPreference data={data} setData={setData} />
       ) : (
-        <HealthAndSafety />
+        <HealthAndSafety data={data} setData={setData} />
       )}
 
       <StepperButtons
@@ -34,6 +56,7 @@ const Homepage = () => {
         activeStep={activeStep}
         handleBack={handleBack}
         handleNext={handleNext}
+        handleReset={handleReset}
       />
     </>
   );

@@ -1,18 +1,18 @@
-import { useState } from "react";
 import { Form, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
+import { handleFormChange } from "../utils/handleFormChange";
 
-const PersonalInfo = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [nationality, setNationality] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const submitHandler = () => {};
+const PersonalInfo = ({ data, setData }) => {
+  const submitHandler = (event) => {
+    event.preventDefault();
+    // Handle form submission
+    console.log("Form submitted:", data);
+  };
 
   return (
     <FormContainer>
       <Form onSubmit={submitHandler}>
+        {/* Name Section */}
         <Form.Group className="my-2" controlId="name">
           <Row>
             <Col md={3}>
@@ -22,13 +22,14 @@ const PersonalInfo = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter Full Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={data.name}
+                onChange={handleFormChange(setData, "name")}
               ></Form.Control>
             </Col>
           </Row>
         </Form.Group>
 
+        {/* Date of Birth */}
         <Form.Group className="my-2" controlId="dateOfBirth">
           <Row>
             <Col md={3}>
@@ -37,13 +38,14 @@ const PersonalInfo = () => {
             <Col md={9}>
               <Form.Control
                 type="date"
-                value={dateOfBirth}
-                onChange={(e) => setDateOfBirth(e.target.value)}
+                value={data.dateOfBirth}
+                onChange={handleFormChange(setData, "dateOfBirth")}
               ></Form.Control>
             </Col>
           </Row>
         </Form.Group>
 
+        {/* Nationality Section */}
         <Form.Group className="my-2" controlId="nationality">
           <Row>
             <Col md={3}>
@@ -53,13 +55,14 @@ const PersonalInfo = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter Your Nationality"
-                value={nationality}
-                onChange={(e) => setNationality(e.target.value)}
+                value={data.nationality}
+                onChange={handleFormChange(setData, "nationality")}
               ></Form.Control>
             </Col>
           </Row>
         </Form.Group>
 
+        {/* Email Section */}
         <Form.Group className="my-2" controlId="email">
           <Row>
             <Col md={3}>
@@ -69,13 +72,14 @@ const PersonalInfo = () => {
               <Form.Control
                 type="email"
                 placeholder="Enter Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={data.email}
+                onChange={handleFormChange(setData, "email")}
               ></Form.Control>
             </Col>
           </Row>
         </Form.Group>
 
+        {/* Phone Section */}
         <Form.Group className="my-2" controlId="phone">
           <Row>
             <Col md={3}>
@@ -85,8 +89,8 @@ const PersonalInfo = () => {
               <Form.Control
                 type="tel"
                 placeholder="Enter Phone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={data.phone}
+                onChange={handleFormChange(setData, "phone")}
               ></Form.Control>
             </Col>
           </Row>

@@ -8,14 +8,20 @@ const StepperButtons = ({
   stepsLength,
   handleBack,
   handleNext,
+  handleReset,
 }) => {
   return (
     <FormContainer>
       {activeStep === stepsLength ? (
         <Row>
-          <Typography sx={{ mt: 2, mb: 1 }}>
-            All steps completed - you&apos;re finished
-          </Typography>
+          <Col className="d-flex justify-content-start" md={8}>
+            <Typography sx={{ mt: 2, mb: 1 }}>
+              Application Submitted - Ready To Mars!
+            </Typography>
+          </Col>
+          <Col className="d-flex justify-content-end" md={4}>
+            <Button onClick={handleReset}>Reset</Button>
+          </Col>
         </Row>
       ) : (
         <Row>
@@ -30,7 +36,7 @@ const StepperButtons = ({
           </Col>
           <Col className="d-flex justify-content-end">
             <Button onClick={handleNext}>
-              {activeStep === stepsLength - 1 ? "Finish" : "Next"}
+              {activeStep === stepsLength - 1 ? "Submit" : "Next"}
             </Button>
           </Col>
         </Row>
