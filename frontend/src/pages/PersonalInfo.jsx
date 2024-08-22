@@ -1,3 +1,4 @@
+// PersonalInfo form
 import { Form, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import { handleFormChange } from "../utils/handleFormChange";

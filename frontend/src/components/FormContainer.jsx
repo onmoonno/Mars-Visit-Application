@@ -1,3 +1,4 @@
+// Use to wrap forms, stepper and button, to display in the center of the screen.
 import { Container, Row, Col } from "react-bootstrap";
 
 const FormContainer = ({ children }) => {

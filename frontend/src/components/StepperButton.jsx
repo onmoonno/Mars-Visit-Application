@@ -12,6 +12,11 @@ const StepperButtons = ({
 }) => {
   return (
     <FormContainer>
+      {/* if finished all the steps, show submit message, 
+      and show 'Reset' button to allow inputting another application */}
+
+      {/* elseif still filling the form, show 'Back' and 'Next' button, 
+      in the last step use 'Submit' button instead of 'Next' */}
       {activeStep === stepsLength ? (
         <Row>
           <Col className="d-flex justify-content-start" md={8}>

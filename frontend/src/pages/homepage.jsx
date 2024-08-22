@@ -6,9 +6,11 @@ import TravelPreference from "./TravelPreference";
 import HealthAndSafety from "./HealthAndSafety";
 
 const Homepage = () => {
+  // Control application steps
   const steps = ["Personal Info", "Travel Preference", "Health and Safety"];
   const [activeStep, setActiveStep] = useState(0);
 
+  // Hold the form data
   const initialData = {
     name: "",
     dateOfBirth: "",
@@ -26,14 +28,13 @@ const Homepage = () => {
   };
   const [data, setData] = useState(initialData);
 
+  // Handle the buttons
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
-
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
   const handleReset = () => {
     setActiveStep(0);
     setData(initialData);
