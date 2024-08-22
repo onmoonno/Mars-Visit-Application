@@ -45,3 +45,5 @@ const infos = [
     medicalCondition: "fdjhhsf",
   },
 ];
+
+export default infos;

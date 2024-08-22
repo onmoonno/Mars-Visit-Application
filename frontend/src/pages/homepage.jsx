@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HorizonalStepper from "../components/HorizonalStepper";
 import StepperButtons from "../components/StepperButton";
 import PersonalInfo from "./PersonalInfo";
 import TravelPreference from "./TravelPreference";
 import HealthAndSafety from "./HealthAndSafety";
+// import infos from "../infos";
+import axios from "axios";
 
 const Homepage = () => {
+  // test to fetch data from backend
+  const [infos, setInfos] = useState([]);
+  useEffect(() => {
+    const fetchinfos = async () => {
+      const { data } = await axios.get("http://localhost:5000/api/infos");
+      setInfos(data);
+    };
+    fetchinfos();
+  }, []);
+
   // Control application steps
   const steps = ["Personal Info", "Travel Preference", "Health and Safety"];
   const [activeStep, setActiveStep] = useState(0);
@@ -59,6 +71,16 @@ const Homepage = () => {
         handleNext={handleNext}
         handleReset={handleReset}
       />
+
+      {/* test fetch data */}
+      {infos.map((info, index) => (
+        <div key={index}>
+          <p>Name: {info.name}</p>
+          <p>Date of Birth: {info.dateOfBirth}</p>
+          <p>Nationality: {info.nationality}</p>
+          <p>Email: {info.email}</p>
+        </div>
+      ))}
     </>
   );
 };
