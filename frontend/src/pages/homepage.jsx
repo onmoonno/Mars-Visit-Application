@@ -4,39 +4,25 @@ import StepperButtons from "../components/StepperButton";
 import PersonalInfo from "./PersonalInfo";
 import TravelPreference from "./TravelPreference";
 import HealthAndSafety from "./HealthAndSafety";
+import initialData from "../utils/initialData";
+import applicationSteps from "../utils/applicationSteps";
 import axios from "axios";
 
 const Homepage = () => {
   // test to fetch data from backend
-  const [infos, setInfos] = useState([]);
-  useEffect(() => {
-    const fetchinfos = async () => {
-      const { data } = await axios.get("/api/infos");
-      setInfos(data);
-    };
-    fetchinfos();
-  }, []);
+  // const [infos, setInfos] = useState([]);
+  // useEffect(() => {
+  //   const fetchinfos = async () => {
+  //     const { data } = await axios.get("/api/infos");
+  //     setInfos(data);
+  //   };
+  //   fetchinfos();
+  // }, []);
 
   // Control application steps
-  const steps = ["Personal Info", "Travel Preference", "Health and Safety"];
   const [activeStep, setActiveStep] = useState(0);
 
   // Hold the form data
-  const initialData = {
-    name: "",
-    dateOfBirth: "",
-    nationality: "",
-    email: "",
-    phone: "",
-    departureDate: "",
-    returnDate: "",
-    specialRequest: "",
-    accommodation: "",
-    healthy: "",
-    emergencyContact: "",
-    emergencyContactPhone: "",
-    medicalCondition: "",
-  };
   const [data, setData] = useState(initialData);
 
   // Handle the buttons
@@ -51,9 +37,50 @@ const Homepage = () => {
     setData(initialData);
   };
 
+  const handleSubmit = async (e) => {
+    const {
+      name,
+      dateOfBirth,
+      nationality,
+      email,
+      phone,
+      departureDate,
+      returnDate,
+      specialRequest,
+      accommodation,
+      healthy,
+      emergencyContact,
+      emergencyContactPhone,
+      medicalCondition,
+    } = data;
+    e.preventDefault();
+    try {
+      await axios.post("/api/infos/submit", {
+        name,
+        dateOfBirth,
+        nationality,
+        email,
+        phone,
+        departureDate,
+        returnDate,
+        specialRequest,
+        accommodation,
+        healthy,
+        emergencyContact,
+        emergencyContactPhone,
+        medicalCondition,
+      });
+      alert("Application Successful!"); // You can replace this with state management for rendering success messages
+      handleNext();
+    } catch (error) {
+      alert("Registration failed!");
+      console.log(error);
+    }
+  };
+
   return (
     <>
-      <HorizonalStepper steps={steps} activeStep={activeStep} />
+      <HorizonalStepper steps={applicationSteps} activeStep={activeStep} />
 
       {activeStep === 0 ? (
         <PersonalInfo data={data} setData={setData} />
@@ -64,22 +91,23 @@ const Homepage = () => {
       )}
 
       <StepperButtons
-        stepsLength={steps.length}
+        stepsLength={applicationSteps.length}
         activeStep={activeStep}
         handleBack={handleBack}
         handleNext={handleNext}
         handleReset={handleReset}
+        handleSubmit={handleSubmit}
       />
 
-      {/* test fetch data */}
-      {infos.map((info, index) => (
+      {/* test fetch data from backend*/}
+      {/* {infos.map((info, index) => (
         <div key={index}>
           <p>Name: {info.name}</p>
           <p>Date of Birth: {info.dateOfBirth}</p>
           <p>Nationality: {info.nationality}</p>
           <p>Email: {info.email}</p>
         </div>
-      ))}
+      ))} */}
     </>
   );
 };

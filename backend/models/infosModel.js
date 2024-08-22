@@ -9,7 +9,6 @@ const infosSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
     },
     dateOfBirth: {
       type: String,

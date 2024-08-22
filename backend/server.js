@@ -14,7 +14,7 @@ const app = express();
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
-
+app.use(express.json()); // enable json data parsing
 app.use("/api/infos", infosRoutes); // everytime use the infosRoutes, first hit /api/infos
 
 app.use(notFound);

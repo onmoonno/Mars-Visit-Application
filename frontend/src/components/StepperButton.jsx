@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Typography } from "@mui/material";
 import { Col, Row } from "react-bootstrap";
 import FormContainer from "./FormContainer";
+import Message from "../components/Message";
 
 const StepperButtons = ({
   activeStep,
@@ -9,6 +10,7 @@ const StepperButtons = ({
   handleBack,
   handleNext,
   handleReset,
+  handleSubmit,
 }) => {
   return (
     <FormContainer>
@@ -20,9 +22,12 @@ const StepperButtons = ({
       {activeStep === stepsLength ? (
         <Row>
           <Col className="d-flex justify-content-start" md={8}>
-            <Typography sx={{ mt: 2, mb: 1 }}>
+            {/* <Typography sx={{ mt: 2, mb: 1 }}>
               Application Submitted - Ready To Mars!
-            </Typography>
+            </Typography> */}
+            <Message variant="success">
+              Application Submitted - Ready To Mars!
+            </Message>
           </Col>
           <Col className="d-flex justify-content-end" md={4}>
             <Button onClick={handleReset}>Reset</Button>
@@ -40,9 +45,11 @@ const StepperButtons = ({
             </Button>
           </Col>
           <Col className="d-flex justify-content-end">
-            <Button onClick={handleNext}>
-              {activeStep === stepsLength - 1 ? "Submit" : "Next"}
-            </Button>
+            {activeStep === stepsLength - 1 ? (
+              <Button onClick={handleSubmit}>Submit</Button>
+            ) : (
+              <Button onClick={handleNext}>Next</Button>
+            )}
           </Col>
         </Row>
       )}

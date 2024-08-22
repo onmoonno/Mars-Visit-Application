@@ -9,4 +9,42 @@ const getInfos = asyncHandler(async (req, res) => {
   res.json(infos);
 });
 
-export { getInfos };
+// @desc Post all the infos
+// @route POST /api/infos/submit
+const postInfos = asyncHandler(async (req, res) => {
+  const {
+    name,
+    dateOfBirth,
+    nationality,
+    email,
+    phone,
+    departureDate,
+    returnDate,
+    specialRequest,
+    accommodation,
+    healthy,
+    emergencyContact,
+    emergencyContactPhone,
+    medicalCondition,
+  } = req.body;
+
+  const newInfo = await Infos.create({
+    name,
+    dateOfBirth,
+    nationality,
+    email,
+    phone,
+    departureDate,
+    returnDate,
+    specialRequest,
+    accommodation,
+    healthy,
+    emergencyContact,
+    emergencyContactPhone,
+    medicalCondition,
+  });
+
+  res.json(newInfo);
+});
+
+export { getInfos, postInfos };
