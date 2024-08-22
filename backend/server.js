@@ -7,12 +7,10 @@ import infos from "./data/infos.js";
 // import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config(); // Use .env variables
-// connectDB(); // Connect database
+connectDB(); // Connect database
 
 const port = process.env.PORT; // Use express to run backend
 const app = express();
-
-// app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("API is running...");
