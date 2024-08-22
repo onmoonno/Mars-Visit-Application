@@ -1,13 +1,13 @@
 import express from "express";
-// import dotenv from "dotenv";
-// dotenv.config();
-// import connectDB from "./config/db.js";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
 // import productRoutes from "./routes/productRoutes.js";
 // import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
-// connectDB();
+dotenv.config(); // Use .env variables
+connectDB(); // Connect database
 
-// const port = process.env.PORT;
+const port = process.env.PORT; // Use express to run backend
 const app = express();
 
 app.get("/", (req, res) => {
@@ -19,4 +19,4 @@ app.get("/", (req, res) => {
 // app.use(notFound);
 // app.use(errorHandler);
 
-app.listen(5000, () => console.log(`Server running on port ${5000}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));
