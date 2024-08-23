@@ -15,7 +15,6 @@
 11. [Contact](#contact)
 
 ## Project Overview
-![demo](/Users/yunxiazhang/Desktop/MarsVisitApp Demo.gif)
 
 This project is a web application built using the MERN stack (MongoDB, Express, React, Node.js). The application is designed to handle multi-step form submissions with validation and data persistence. The data is collected from users and stored in a MongoDB database via the backend API. The form includes personal information, travel preferences, and health and safety details.
 
@@ -54,7 +53,8 @@ This project is a web application built using the MERN stack (MongoDB, Express, 
 
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
-Navigate to the project directory:
+   Navigate to the project directory:
+   ```
 
 bash
 Copy code
@@ -96,19 +96,19 @@ Request Body:
 json
 Copy code
 {
-  "name": "John Doe",
-  "dateOfBirth": "1990-01-01",
-  "nationality": "American",
-  "email": "john.doe@example.com",
-  "phone": "1234567890",
-  "departureDate": "2024-01-01",
-  "returnDate": "2024-01-15",
-  "specialRequest": "Vegetarian meal",
-  "accommodation": "Hotel",
-  "healthy": true,
-  "emergencyContact": "Jane Doe",
-  "emergencyContactPhone": "0987654321",
-  "medicalCondition": "None"
+"name": "John Doe",
+"dateOfBirth": "1990-01-01",
+"nationality": "American",
+"email": "john.doe@example.com",
+"phone": "1234567890",
+"departureDate": "2024-01-01",
+"returnDate": "2024-01-15",
+"specialRequest": "Vegetarian meal",
+"accommodation": "Hotel",
+"healthy": true,
+"emergencyContact": "Jane Doe",
+"emergencyContactPhone": "0987654321",
+"medicalCondition": "None"
 }
 GET /api/infos
 Description: Retrieves all submitted user information.
@@ -124,12 +124,12 @@ plaintext
 Copy code
 root
 ├── client
-│   ├── public
-│   └── src
-│       ├── components
-│       ├── pages
-│       ├── utils
-│       └── App.js
+│ ├── public
+│ └── src
+│ ├── components
+│ ├── pages
+│ ├── utils
+│ └── App.js
 ├── models
 ├── routes
 ├── controllers
