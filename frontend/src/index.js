@@ -9,7 +9,7 @@ import {
 import "./assets/styles/bootstrap.custom.css";
 import "./assets/styles/index.css";
 import App from "./App";
-import Homepage from "./pages/Homepage.jsx";
+import Homepage from "./pages/homepage.jsx";
 import reportWebVitals from "./reportWebVitals";
 
 const router = createBrowserRouter(
