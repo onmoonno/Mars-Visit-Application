@@ -11,13 +11,10 @@ connectDB(); // Connect database
 const port = process.env.PORT; // Use express to run backend
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
 app.use(express.json()); // enable json data parsing
 app.use("/api/infos", infosRoutes); // everytime use the infosRoutes, first hit /api/infos
 
+// Resovle file path, prepare for deploy, in development use get '/', in production use static path
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
   app.use(express.static(path.join(__dirname, "/frontend/build")));
@@ -26,7 +23,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
   );
 } else {
-  const __dirname = path.resolve();
   app.get("/", (req, res) => {
     res.send("API is running....");
   });
