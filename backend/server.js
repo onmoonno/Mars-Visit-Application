@@ -18,21 +18,13 @@ app.get("/", (req, res) => {
 app.use(express.json()); // enable json data parsing
 app.use("/api/infos", infosRoutes); // everytime use the infosRoutes, first hit /api/infos
 
-const _dirname = path.resolve();
-if (process.env.NODE_ENV === "production") {
-  // set static folder
-  app.use(express.static(path.join(_dirname, "/frontend/build")));
+// Serve static files from the frontend build folder
+app.use(express.static(path.join(__dirname, "frontend/build")));
 
-  // any route that is not api will be redirected to index.html
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(_dirname, "frontend", "build", "index.html"));
-  });
-}
-//  else {
-//   app.get("/", (req, res) => {
-//     res.send("API is running...");
-//   });
-// }
+// Any route that is not an API route will serve the index.html from the build folder
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+});
 
 app.use(notFound);
 app.use(errorHandler);
