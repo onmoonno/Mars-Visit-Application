@@ -15,6 +15,7 @@
 11. [Contact](#contact)
 
 ## Project Overview
+![demo](/Users/yunxiazhang/Desktop/MarsVisitApp Demo.gif)
 
 This project is a web application built using the MERN stack (MongoDB, Express, React, Node.js). The application is designed to handle multi-step form submissions with validation and data persistence. The data is collected from users and stored in a MongoDB database via the backend API. The form includes personal information, travel preferences, and health and safety details.
 
