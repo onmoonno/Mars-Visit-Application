@@ -10,7 +10,8 @@
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/config/dbSeeder.js",
-    "data:destroy": "node backend/config/dbSeeder.js -d"
+    "data:destroy": "node backend/config/dbSeeder.js -d",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Yunxia Zhang",
   "license": "MIT",
