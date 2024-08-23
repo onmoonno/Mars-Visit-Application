@@ -18,13 +18,19 @@ app.get("/", (req, res) => {
 app.use(express.json()); // enable json data parsing
 app.use("/api/infos", infosRoutes); // everytime use the infosRoutes, first hit /api/infos
 
-// Serve static files from the frontend build folder
-app.use(express.static(path.join(__dirname, "frontend/build")));
+if (process.env.NODE_ENV === "production") {
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
 
-// Any route that is not an API route will serve the index.html from the build folder
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-});
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+} else {
+  const __dirname = path.resolve();
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
 
 app.use(notFound);
 app.use(errorHandler);
