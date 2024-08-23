@@ -32,7 +32,7 @@ This project is a web application built using the MERN stack (MongoDB, Express, 
 - **Frontend:**
   - React
   - React-Bootstrap
-  - React-Router-Dom`
+  - React-Router-Dom
   - Material UI
 - **Backend:**
   - Node.js
